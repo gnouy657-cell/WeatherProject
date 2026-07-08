@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yuyu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <title>Weather</title>
+  </head>
+  <body>
+    <div class="weather-app">
+      <header>
+        <form class="search-form" id="search-form">
+        <input id="search-form-input" type="search" placeholder="Enter City" name="city" required class="search-form-input"/>
+        <input type="submit" value="Search" class="search-form-button"/>
+      </form>
+      </header>
+      <main>
+        <div class="current-weather-app">
+          <div>
+          <h1 id="city-name-app" class="city-name-app">
+            <strong>Tha Chok District</strong>
+          </h1>
+          <p class="weather-description-app">
+            Friday 13:02, Dry Conditions
+            <br />
+            Humidity: <strong>87%</strong> Wind:<strong>1 km/h</strong>
+          </p>
+        </div>
+        <div class="current-weather-temperature-app-container">
+          <div class="weather-icon-app">🌞</div>
+          <div class="temperature-value-app">27</div>
+            <div class="temperature-unit-app">°C</div>
+        </div>
+        </div>
+      </main>
+    <footer>
+      <p>
+        This project was built by
+        <a href="https://github.com/gnouy657-cell" target="_blank">
+          Brooke Thao</a
+        >, is open-sourced on
+        <a href="https://github.com/gnouy657-cell/Tha-Chok" target="_blank">
+          Github
+        </a>
+        and hosted by
+        <a href="https://tha-chok-1.onrender.com" target="_blank"
+          >Render</a>.
+      </p>
+    </div>
+    <script src="index.js"></script>
+    </footer>
+  </body>
+</html>
+
+
+
+
+<div class="forecast-list">
+          <ul>
+            <li>Sat⛅ <br /><strong>20°C</strong> - 26°C</li>
+            <li>Sun☀ <br /><strong>25°C</strong> - 27°C</li>
+            <li>Mon☀ <br /><strong>26°C</strong> - 30°C</li>
+            <li>Tue🌦 <br /><strong>23°C</strong> - 27°C</li>
+            <li>Wed🌧 <br /><strong>22°C</strong> - 25°C</li>
+          </ul>
+        </div>
