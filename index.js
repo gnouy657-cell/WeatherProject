@@ -9,14 +9,14 @@ function displayWeatherCondition(response) {
 
   let weatherIconElement = document.querySelector("#weather-icon-app");
 
-  weatherIconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-icon-app">`;
-
   cityNameElement.innerHTML = response.data.city;
   temperatureElement.innerHTML = Math.round(temperature);
   dateTimeElement.innerHTML = formatDate(response.data.time);
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   windElement.innerHTML = `${Math.round(response.data.wind.speed)} mph`;
+
+  weatherIconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-icon-app">`;
 }
 
 function formatDate(timestamp) {
