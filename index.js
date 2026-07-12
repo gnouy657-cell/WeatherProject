@@ -1,3 +1,5 @@
+console.log(response.data);
+
 function displayWeatherCondition(response) {
   let temperatureElement = document.querySelector("#temperature-value-app");
   let cityNameElement = document.querySelector("#city-name-app");
@@ -5,7 +7,6 @@ function displayWeatherCondition(response) {
   let descriptionElement = document.querySelector("#weather-description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind-speed");
-
   let temperature = response.data.temperature.current;
 
   let weatherIconElement = document.querySelector("#weather-icon-app");
@@ -62,4 +63,4 @@ function handleSearchSubmit(event) {
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
-searchCity("Tha Chok District");
+searchCity("Vientiane");
