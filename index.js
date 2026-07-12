@@ -1,5 +1,3 @@
-console.log(response.data);
-
 function displayWeatherCondition(response) {
   let temperatureElement = document.querySelector("#temperature-value-app");
   let cityNameElement = document.querySelector("#city-name-app");
