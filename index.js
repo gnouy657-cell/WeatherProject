@@ -5,8 +5,12 @@ function displayWeatherCondition(response) {
   let descriptionElement = document.querySelector("#weather-description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind-speed");
+
   let temperature = response.data.temperature.current;
-  let date = new Date(timestamp * 1000);
+
+  let weatherIconElement = document.querySelector("#weather-icon-app");
+
+  weatherIconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-icon-app">`;
 
   cityNameElement.innerHTML = response.data.city;
   temperatureElement.innerHTML = Math.round(temperature);
@@ -17,8 +21,7 @@ function displayWeatherCondition(response) {
 }
 
 function formatDate(timestamp) {
-  let minutes = date.getMinutes();
-  let hours = date.getHours();
+  let date = new Date(timestamp * 1000);
 
   let days = [
     "Sunday",
