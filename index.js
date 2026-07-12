@@ -1,31 +1,24 @@
 function displayWeatherCondition(response) {
-  console.log(response.data);
-  console.log(response.data.time);
   let temperatureElement = document.querySelector("#temperature-value-app");
   let cityNameElement = document.querySelector("#city-name-app");
   let dateTimeElement = document.querySelector("#current-date-time");
   let descriptionElement = document.querySelector("#weather-description");
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind-speed");
+  let temperature = response.data.temperature.current;
+  let date = new Date(timestamp * 1000);
 
   cityNameElement.innerHTML = response.data.city;
-  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
-
+  temperatureElement.innerHTML = Math.round(temperature);
   dateTimeElement.innerHTML = formatDate(response.data.time);
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   windElement.innerHTML = `${Math.round(response.data.wind.speed)} mph`;
 }
 
-function searchCity(city) {
-  let apiKey = "eob2a41574f3at947904539fe34b012a";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
-
-  axios.get(apiUrl).then(displayWeatherCondition);
-}
-
 function formatDate(timestamp) {
-  let date = new Date(timestamp * 1000);
+  let minutes = date.getMinutes();
+  let hours = date.getHours();
 
   let days = [
     "Sunday",
@@ -46,6 +39,13 @@ function formatDate(timestamp) {
   }
 
   return `${day} ${hours}:${minutes}`;
+}
+
+function searchCity(city) {
+  let apiKey = "eob2a41574f3at947904539fe34b012a";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
+
+  axios.get(apiUrl).then(displayWeatherCondition);
 }
 
 function handleSearchSubmit(event) {
