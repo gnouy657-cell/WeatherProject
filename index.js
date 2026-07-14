@@ -17,6 +17,8 @@ function displayWeatherCondition(response) {
   windElement.innerHTML = `${Math.round(response.data.wind.speed)} mph`;
 
   weatherIconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-icon-app">`;
+
+  getForecast("response.data.city");
 }
 
 function formatDate(timestamp) {
@@ -66,8 +68,6 @@ function getForecast(city) {
 }
 
 function displayForecast(response) {
-  console.log(response.data);
-
   let forecastElement = document.querySelector("#forecast");
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   let forecastHtml = "";
@@ -96,5 +96,3 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Vientiane");
-getForecast("Vientiane");
-displayForecast();
