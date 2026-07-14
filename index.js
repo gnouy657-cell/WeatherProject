@@ -58,7 +58,34 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  let forescastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+      <div class="forecast-day">
+            <div class="forecast-day-date">${day}</div>
+            <div class="forecast-day-icon">☀️</div>
+            <div class="forecast-day-temperature">
+              <div class="forecast-day-temperatures">
+              <strong>20°</strong>
+            </div>
+              <div class="forecast-day-temperature">10°</div>
+          </div>
+        </div>
+      `;
+  });
+
+  forecastElement.innerHTML = forecastHtml;
+}
+
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Vientiane");
+displayForecast();
