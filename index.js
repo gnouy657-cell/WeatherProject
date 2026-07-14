@@ -60,24 +60,23 @@ function handleSearchSubmit(event) {
 
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
-
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-  let forescastHtml = "";
+  let forecastHtml = "";
 
   days.forEach(function (day) {
     forecastHtml =
       forecastHtml +
       `
       <div class="forecast-day">
-            <div class="forecast-day-date">${day}</div>
-            <div class="forecast-day-icon">☀️</div>
-            <div class="forecast-day-temperature">
-              <div class="forecast-day-temperatures">
-              <strong>20°</strong>
-            </div>
-              <div class="forecast-day-temperature">10°</div>
+        <div class="forecast-day-date">${day}</div>
+        <div class="forecast-day-icon">☀️</div>
+        <div class="forecast-day-temperature">
+          <div class="forecast-day-temperatures">
+            <strong>20°</strong>
           </div>
+          <div class="forecast-day-temperature">10°</div>
         </div>
+      </div>
       `;
   });
 
