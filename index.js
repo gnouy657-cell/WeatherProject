@@ -18,7 +18,7 @@ function displayWeatherCondition(response) {
 
   weatherIconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-icon-app">`;
 
-  getForecast("response.data.city");
+  getForecast(response.data.city);
 }
 
 function formatDate(timestamp) {
@@ -60,6 +60,13 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
+
 function getForecast(city) {
   let apiKey = "eob2a41574f3at947904539fe34b012a";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=imperial`;
@@ -68,25 +75,32 @@ function getForecast(city) {
 }
 
 function displayForecast(response) {
+  console.log(response.data.daily[0].temperature);
+
   let forecastElement = document.querySelector("#forecast");
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   let forecastHtml = "";
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
-      <div class="forecast-day">
-        <div class="forecast-day-date">${day}</div>
-        <div class="forecast-day-icon">☀️</div>
-        <div class="forecast-day-temperature">
-          <div class="forecast-day-temperatures">
-            <strong>20°</strong>
+  if (!response.data.daily) {
+    return;
+  }
+
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml += `
+        <div class="forecast-day">
+          <div class="forecast-day-date">${formatDay(day.time)}</div>
+          <div class="forecast-day-icon">
+            <img src="${day.condition.icon_url}" class="weather-icon-app">
           </div>
-          <div class="forecast-day-temperature">10°</div>
+          <div class="forecast-day-temperature">
+            <div class="forecast-day-temperatures">
+  <strong>${Math.round(day.temperature.maximum)}°</strong>
+  <span>${Math.round(day.temperature.minimum)}°</span>
+</div>
+          </div>
         </div>
-      </div>
       `;
+    }
   });
 
   forecastElement.innerHTML = forecastHtml;
