@@ -1,6 +1,6 @@
 body {
   background-color: #f9f7fe;
-  font-family: "Amatic SC", regular, sans-serif;
+  font-family: "Amatic SC", sans-serif;
   font-size: 40px;
 }
 
@@ -32,7 +32,7 @@ a {
   padding: 20px 25px;
   font-family: "Amatic SC", sans-serif;
   font-weight: 700;
-  font-style: normal;
+  font-style: bold;
 }
 
 .search-form-button {
@@ -46,7 +46,7 @@ a {
   margin-left: 5px;
   font-family: "Amatic SC", sans-serif;
   font-weight: 700;
-  font-style: normal;
+  font-style: bold;
 }
 
 main {
