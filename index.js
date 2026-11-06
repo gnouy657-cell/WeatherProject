@@ -84,14 +84,11 @@ function getForecast(city) {
   });
 }
 
-function displayForecast(response) {
   function displayForecast(response) {
   if (!response.data.daily) {
     console.error("Forecast data is missing.");
     return;
   }
-
-  console.log(response.data.daily[0].temperature);
   
   let forecastElement = document.querySelector("#forecast");
   let forecastHtml = "";
