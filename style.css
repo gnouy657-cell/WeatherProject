@@ -160,3 +160,8 @@ footer {
   color: rgba(0, 0, 0, 0.8);
   font-weight: 580;
 }
+
+.weather-icon-app {
+  font-size: 45px;
+  display: inline-block;
+}
