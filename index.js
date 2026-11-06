@@ -85,8 +85,14 @@ function getForecast(city) {
 }
 
 function displayForecast(response) {
+  function displayForecast(response) {
+  if (!response.data.daily) {
+    console.error("Forecast data is missing.");
+    return;
+  }
+
   console.log(response.data.daily[0].temperature);
- 
+  
   let forecastElement = document.querySelector("#forecast");
   let forecastHtml = "";
 
@@ -95,7 +101,6 @@ function displayForecast(response) {
   }
 
   response.data.daily.forEach(function (day, index) {
-    console.log("Forecast icon:", day.condition.icon_url);
     if (index < 5) {
       forecastHtml += `
         <div class="forecast-day">
