@@ -6,7 +6,7 @@ function displayWeatherCondition(response) {
   let humidityElement = document.querySelector("#humidity");
   let windElement = document.querySelector("#wind-speed");
   let temperature = response.data.temperature.current;
-
+  console.log("Current weather icon:", response.data.condition.icon_url);
   let weatherIconElement = document.querySelector("#weather-icon-app");
 
   cityNameElement.innerHTML = response.data.city;
@@ -86,7 +86,7 @@ function getForecast(city) {
 
 function displayForecast(response) {
   console.log(response.data.daily[0].temperature);
-
+ 
   let forecastElement = document.querySelector("#forecast");
   let forecastHtml = "";
 
@@ -95,6 +95,7 @@ function displayForecast(response) {
   }
 
   response.data.daily.forEach(function (day, index) {
+    console.log("Forecast icon:", day.condition.icon_url);
     if (index < 5) {
       forecastHtml += `
         <div class="forecast-day">
