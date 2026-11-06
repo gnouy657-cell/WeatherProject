@@ -1,3 +1,32 @@
+function getWeatherIcon(description) {
+  let condition = description.toLowerCase();
+
+  if (condition.includes("thunder")) {
+    return "wi-thunderstorm";
+  } else if (
+    condition.includes("rain") ||
+    condition.includes("drizzle")
+  ) {
+    return "wi-rain";
+  } else if (condition.includes("snow")) {
+    return "wi-snow";
+  } else if (
+    condition.includes("fog") ||
+    condition.includes("mist")
+  ) {
+    return "wi-fog";
+  } else if (condition.includes("clear")) {
+    return "wi-day-sunny";
+  } else if (condition.includes("few clouds") ||
+             condition.includes("broken clouds")) {
+    return "wi-day-cloudy";
+  } else if (condition.includes("cloud")) {
+    return "wi-cloudy";
+  }
+
+  return "wi-cloud";
+}
+
 function displayWeatherCondition(response) {
   let temperatureElement = document.querySelector("#temperature-value-app");
   let cityNameElement = document.querySelector("#city-name-app");
@@ -16,7 +45,7 @@ function displayWeatherCondition(response) {
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   windElement.innerHTML = `${Math.round(response.data.wind.speed)} mph`;
 
-  weatherIconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-icon-app">`;
+  weatherIconElement.innerHTML = `<i class="wi ${getWeatherIcon(response.data.condition.description)} weather-icon-app"></i>`;
 
   getForecast(response.data.city);
 }
@@ -98,7 +127,7 @@ function displayForecast(response) {
         <div class="forecast-day">
           <div class="forecast-day-date">${formatDay(day.time)}</div>
           <div class="forecast-day-icon">
-            <img src="${day.condition.icon_url}" class="weather-icon-app">
+            <i class="wi ${getWeatherIcon(day.condition.description)} weather-icon-app"></i>
           </div>
           <div class="forecast-day-temperature">
             <div class="forecast-day-temperatures">
