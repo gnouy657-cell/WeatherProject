@@ -49,7 +49,13 @@ function searchCity(city) {
   let apiKey = "eob2a41574f3at947904539fe34b012a";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
 
-  axios.get(apiUrl).then(displayWeatherCondition);
+  axios.get(apiUrl)
+  .then(displayWeatherCondition)
+  .catch(function (error) {
+    console.error("Current weather error:", error);
+    document.querySelector("#weather-description").innerHTML =
+      "Unable to load weather data.";
+  });
 }
 
 function handleSearchSubmit(event) {
@@ -71,7 +77,11 @@ function getForecast(city) {
   let apiKey = "eob2a41574f3at947904539fe34b012a";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=imperial`;
 
-  axios.get(apiUrl).then(displayForecast);
+  axios.get(apiUrl)
+  .then(displayForecast)
+  .catch(function (error) {
+    console.error("Forecast error:", error);
+  });
 }
 
 function displayForecast(response) {
