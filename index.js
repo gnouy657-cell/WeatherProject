@@ -83,19 +83,14 @@ function getForecast(city) {
     console.error("Forecast error:", error);
   });
 }
-
-  function displayForecast(response) {
+function displayForecast(response) {
   if (!response.data.daily) {
     console.error("Forecast data is missing.");
     return;
   }
-  
+
   let forecastElement = document.querySelector("#forecast");
   let forecastHtml = "";
-
-  if (!response.data.daily) {
-    return;
-  }
 
   response.data.daily.forEach(function (day, index) {
     if (index < 5) {
@@ -107,9 +102,9 @@ function getForecast(city) {
           </div>
           <div class="forecast-day-temperature">
             <div class="forecast-day-temperatures">
-  <strong>${Math.round(day.temperature.maximum)}°</strong>
-  <span>${Math.round(day.temperature.minimum)}°</span>
-</div>
+              <strong>${Math.round(day.temperature.maximum)}°</strong>
+              <span>${Math.round(day.temperature.minimum)}°</span>
+            </div>
           </div>
         </div>
       `;
@@ -118,7 +113,6 @@ function getForecast(city) {
 
   forecastElement.innerHTML = forecastHtml;
 }
-
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
